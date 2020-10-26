@@ -118,30 +118,32 @@ export default {
 
     watch(() => state.selectedDrink,
       (val) => {
-        if (val === 'dushes') { 
-          state.drinkColor = '#f3a133' 
-          setTimeout(() => {
-            state.cache = state.cache - 5
-          }, 3500)
-        }
-        if (val === 'lemonad') { 
-          state.drinkColor = '#b8b633'
-          setTimeout(() => {
-            state.cache = state.cache - 7
-          }, 3500)
-        }
-        if (val === 'tarhun') { 
-          state.drinkColor = '#418107'
-          setTimeout(() => {
-            state.cache = state.cache - 15
-          }, 3500)
-        }
+        if (state.cache > 0) {
+          if (val === 'dushes') { 
+            state.drinkColor = '#f3a133' 
+            setTimeout(() => {
+              state.cache = state.cache - 5
+            }, 3500)
+          }
+          if (val === 'lemonad') { 
+            state.drinkColor = '#b8b633'
+            setTimeout(() => {
+              state.cache = state.cache - 7
+            }, 3500)
+          }
+          if (val === 'tarhun') { 
+            state.drinkColor = '#418107'
+            setTimeout(() => {
+              state.cache = state.cache - 15
+            }, 3500)
+          }
 
-        if (val !== null) {
-          prepareDrink()
-          setTimeout(() => {
-            poureDrink()
-          }, 5000)
+          if (val !== null) {
+            prepareDrink()
+            setTimeout(() => {
+              poureDrink()
+            }, 5000)
+          }
         }
       }
     )
@@ -205,6 +207,7 @@ export default {
     justify-content: space-around;
     align-items: center;
     box-shadow: inset 0 0px 15px rgba(0,0,0,.5);
+    overflow: hidden;
   }
 
   &__drinkWrapper {
